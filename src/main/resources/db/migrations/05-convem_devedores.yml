@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: 05
+      author: Andrew Ramires May
+      changes:
+        - createSequence:
+            sequenceName: CONVEM_DEVEDORES_SEQ
+            incrementBy:  50
+        - createTable:
+            tableName: CONVEM_DEVEDORES
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name: DATA_INICIAL
+                  type: DATETIME
+              - column:
+                  name: DATA_FINAL
+                  type: DATETIME
+              - column:
+                  name: VALOR
+                  type: NUMBER
+              - column:
+                  name: ORIGEM
+                  type: varchar
+              - column:
+                  name: QUANTIDADE
+                  type: NUMBER
+              - column:
+                  name: CONSULTA_ID
+                  type: INT
+        - addForeignKeyConstraint:
+            baseColumnNames: CONSULTA_ID
+            baseTableName: CONVEM_DEVEDORES
+            constraintName: fk_devedores_consulta
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: CONSULTA
+            validate: true

@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 09
+      author: Andrew Ramires May
+      changes:
+        - createSequence:
+            sequenceName: SCORE_SEQ
+            incrementBy:  50
+        - createTable:
+            tableName: SCORE
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name: DATA
+                  type: DATETIME
+              - column:
+                  name: FATOR
+                  type: varchar
+              - column:
+                  name: PROBABILIDADE_INADIMPLENCIA
+                  type: varchar
+              - column:
+                  name: MENSAGEM
+                  type: varchar
+              - column:
+                  name: porte
+                  type: varchar
+              - column:
+                  name: SUB_TIPO
+                  type: varchar
+              - column:
+                  name: CONSULTA_ID
+                  type: INT
+        - addForeignKeyConstraint:
+            baseColumnNames: CONSULTA_ID
+            baseTableName: SCORE
+            constraintName: fk_score_consulta
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: CONSULTA
+            validate: true

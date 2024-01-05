@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: 02
+      author: Andrew Ramires May
+      changes:
+        - createSequence:
+            sequenceName: ACAO_JUDICIAL_SEQ
+            incrementBy:  50
+        - createTable:
+            tableName: ACAO_JUDICIAL
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name: DATA_INICIAL
+                  type: DATETIME
+              - column:
+                  name: DATA_FINAL
+                  type: DATETIME
+              - column:
+                  name: VALOR
+                  type: NUMBER
+              - column:
+                  name: ORIGEM
+                  type: varchar
+              - column:
+                  name: QUANTIDADE
+                  type: NUMBER
+              - column:
+                  name: CONSULTA_ID
+                  type: INT
+        - addForeignKeyConstraint:
+            baseColumnNames: CONSULTA_ID
+            baseTableName: ACAO_JUDICIAL
+            constraintName: fk_acao_consulta
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: CONSULTA
+            validate: true

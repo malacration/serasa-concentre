@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 08
+      author: Andrew Ramires May
+      changes:
+        - createSequence:
+            sequenceName: PROTESTOS_SEQ
+            incrementBy:  50
+        - createTable:
+            tableName: PROTESTOS
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name: DATA_INICIAL
+                  type: DATETIME
+              - column:
+                  name: DATA_FINAL
+                  type: DATETIME
+              - column:
+                  name: VALOR
+                  type: NUMBER
+              - column:
+                  name: SUB_TIPO
+                  type: varchar
+              - column:
+                  name: ORIGEM
+                  type: varchar
+              - column:
+                  name: TOTAL
+                  type: NUMBER
+              - column:
+                  name: CONSULTA_ID
+                  type: INT
+        - addForeignKeyConstraint:
+            baseColumnNames: CONSULTA_ID
+            baseTableName: PROTESTOS
+            constraintName: fk_protestos_consulta
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: CONSULTA
+            validate: true

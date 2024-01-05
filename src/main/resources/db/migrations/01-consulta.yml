@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01
+      author: Andrew Ramires May
+      changes:
+        - createSequence:
+            sequenceName: CONSULTA_SEQ
+            incrementBy:  50
+        - createTable:
+            tableName: consulta
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name: DATA_CONSULTA
+                  type: DATETIME
+              - column:
+                  name: ENTRADA
+                  type: clob
+              - column:
+                  name: CPF_CNPJ
+                  type: varchar
+              - column:
+                  name: TIPO_PESSOA
+                  type: varchar
+        - createIndex:
+            columns:
+              - column:
+                  descending: true
+                  name: CPF_CNPJ
+            indexName: cpf_cnpj
+            tableName: consulta
+
+

@@ -1,0 +1,127 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SerasaService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">br.andrew.serasa.services</a>
+</div>
+
+<h1>Coverage Summary for Class: SerasaService (br.andrew.serasa.services)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SerasaService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33,3%
+  </span>
+  <span class="absValue">
+    (1/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    27,3%
+  </span>
+  <span class="absValue">
+    (3/11)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package br.andrew.serasa.services
+&nbsp;
+&nbsp;import br.andrew.serasa.model.magnetivo.B49C
+&nbsp;import br.andrew.serasa.model.retorno.ParseRetorno
+&nbsp;import br.andrew.serasa.config.SerasaProperties
+&nbsp;import br.andrew.serasa.model.magnetivo.CpfCnpj
+&nbsp;import org.springframework.http.RequestEntity
+&nbsp;import org.springframework.stereotype.Service
+&nbsp;import org.springframework.web.client.RestTemplate
+&nbsp;
+<b class="fc">&nbsp;@Service</b>
+<b class="fc">&nbsp;class SerasaService(val conf: SerasaProperties,</b>
+<b class="fc">&nbsp;                    val restTemplate: RestTemplate) {</b>
+&nbsp;
+<b class="nc">&nbsp;    fun getByCpf(cpf : String, score : Boolean = false) : ParseRetorno {</b>
+<b class="nc">&nbsp;        val b4 = B49C(CpfCnpj(cpf),score).toString()</b>
+<b class="nc">&nbsp;        val url = conf.getBase()</b>
+<b class="nc">&nbsp;        val request = RequestEntity</b>
+<b class="nc">&nbsp;            .post(url+b4)</b>
+<b class="nc">&nbsp;            .build()</b>
+<b class="nc">&nbsp;        val retorno  = restTemplate.exchange(request, String::class.java).body ?: throw Exception(&quot;Erro ao consultar Serasa&quot;)</b>
+<b class="nc">&nbsp;        return ParseRetorno(retorno,CpfCnpj(cpf))</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-05 16:34</div>
+</div>
+</body>
+</html>

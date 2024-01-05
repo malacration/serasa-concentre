@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: 04
+      author: Andrew Ramires May
+      changes:
+        - createSequence:
+            sequenceName: CHEQUE_SEM_FUNDO_SEQ
+            incrementBy:  50
+        - createTable:
+            tableName: CHEQUE_SEM_FUNDO
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name: DATA_INICIAL
+                  type: DATETIME
+              - column:
+                  name: DATA_FINAL
+                  type: DATETIME
+              - column:
+                  name: VALOR
+                  type: NUMBER
+              - column:
+                  name: ORIGEM
+                  type: varchar
+              - column:
+                  name: QTD_TOTAL
+                  type: NUMBER
+              - column:
+                  name: CONSULTA_ID
+                  type: INT
+        - addForeignKeyConstraint:
+            baseColumnNames: CONSULTA_ID
+            baseTableName: CHEQUE_SEM_FUNDO
+            constraintName: fk_chque_consulta
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: CONSULTA
+            validate: true

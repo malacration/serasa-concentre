@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 07
+      author: Andrew Ramires May
+      changes:
+        - createSequence:
+            sequenceName: PENDENCIA_BANCARIA_SEQ
+            incrementBy:  50
+        - createTable:
+            tableName: PENDENCIA_BANCARIA
+            columns:
+              - column:
+                  name: ID
+                  type: INT
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name: DATA_INICIAL
+                  type: DATETIME
+              - column:
+                  name: DATA_FINAL
+                  type: DATETIME
+              - column:
+                  name: VALOR
+                  type: NUMBER
+              - column:
+                  name: SUB_TIPO
+                  type: varchar
+              - column:
+                  name: TIPO_OCORRENCIA
+                  type: varchar
+              - column:
+                  name: ORIGEM
+                  type: varchar
+              - column:
+                  name: QUANTIDADE
+                  type: NUMBER
+              - column:
+                  name: CONSULTA_ID
+                  type: INT
+        - addForeignKeyConstraint:
+            baseColumnNames: CONSULTA_ID
+            baseTableName: PENDENCIA_BANCARIA
+            constraintName: fk_bancaria_consulta
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: CONSULTA
+            validate: true

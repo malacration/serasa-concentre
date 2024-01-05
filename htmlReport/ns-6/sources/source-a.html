@@ -1,0 +1,135 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ScoreRshiRetorno</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">br.andrew.serasa.model.retorno</a>
+</div>
+
+<h1>Coverage Summary for Class: ScoreRshiRetorno (br.andrew.serasa.model.retorno)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ScoreRshiRetorno</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package br.andrew.serasa.model.retorno
+&nbsp;
+&nbsp;import br.andrew.serasa.model.Consulta
+&nbsp;import br.andrew.serasa.model.ScoreRshi
+&nbsp;import java.text.SimpleDateFormat
+&nbsp;import java.util.Date
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;class ScoreRshiRetorno(val entrada : String) {</b>
+&nbsp;
+<b class="fc">&nbsp;    private val parse = RetornoSerasa()</b>
+<b class="fc">&nbsp;    val data : String = entrada.substring(11, 11+8)</b>
+<b class="fc">&nbsp;    val hora : String = entrada.substring(19, 19+8)</b>
+<b class="fc">&nbsp;    val fator : String = entrada.substring(27, 27+4)</b>
+<b class="fc">&nbsp;    val probabilidadeInadimplencia : String = entrada.substring(31, 31+5)</b>
+<b class="fc">&nbsp;    val mensagem : String = entrada.substring(36, 36+78)</b>
+<b class="fc">&nbsp;    val porte : String = entrada.substring(114, 115)</b>
+&nbsp;
+<b class="fc">&nbsp;    val subTipo = entrada.substring(8, 8+3)</b>
+&nbsp;
+<b class="fc">&nbsp;    val dataTime : Date = SimpleDateFormat(&quot;ddMMyyy HH:mm:ss&quot;).parse(&quot;$data $hora&quot;)</b>
+&nbsp;
+<b class="fc">&nbsp;    init {</b>
+<b class="fc">&nbsp;        if(subTipo != &quot;001&quot;)</b>
+<b class="fc">&nbsp;            throw Exception(&quot;Subtipo invalido $subTipo&quot;)</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    fun getScore(consulta : Consulta): ScoreRshi {
+<b class="fc">&nbsp;        return ScoreRshi(dataTime,fator,probabilidadeInadimplencia,mensagem,porte,subTipo,consulta)</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-05 16:34</div>
+</div>
+</body>
+</html>

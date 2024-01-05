@@ -1,0 +1,156 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CpfCnpj</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">br.andrew.serasa.model.magnetivo</a>
+</div>
+
+<h1>Coverage Summary for Class: CpfCnpj (br.andrew.serasa.model.magnetivo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CpfCnpj</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83,3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    40,7%
+  </span>
+  <span class="absValue">
+    (11/27)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package br.andrew.serasa.model.magnetivo
+&nbsp;
+&nbsp;import br.andrew.serasa.model.TipoPessoa
+&nbsp;
+<b class="fc">&nbsp;class CpfCnpj(value : String) {</b>
+&nbsp;
+<b class="fc">&nbsp;    val value : String</b>
+&nbsp;
+<b class="fc">&nbsp;    init {</b>
+<b class="fc">&nbsp;        this.value = value.replace(&quot;\\D&quot;.toRegex(), &quot;&quot;)</b>
+<b class="fc">&nbsp;        if(this.value.length &gt; 14)</b>
+<b class="nc">&nbsp;            throw Exception(&quot;CpfCnpj invalid, tamanho e maior que 14&quot;)</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;
+&nbsp;    fun isCpf() : Boolean {
+<b class="fc">&nbsp;        return value.length == 11</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    fun isCnpj() : Boolean {
+<b class="fc">&nbsp;        return value.length == 14</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    fun tipoPessoa(): TipoPessoa {
+<b class="fc">&nbsp;        return if(isCnpj())</b>
+<b class="nc">&nbsp;            TipoPessoa.JURIDICA</b>
+<b class="fc">&nbsp;        else if(isCpf())</b>
+<b class="fc">&nbsp;            TipoPessoa.FISICA</b>
+&nbsp;        else
+<b class="nc">&nbsp;            throw Exception(&quot;Erro ao determinar o tipo de pessoa pelo CPF ou CNPJ&quot;)</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    fun getWithMask(): String {
+<b class="nc">&nbsp;        return when (value.length) {</b>
+&nbsp;            11 -&gt; { // CPF
+<b class="nc">&nbsp;                val part1 = value.substring(0, 3)</b>
+<b class="nc">&nbsp;                val part2 = value.substring(3, 6)</b>
+<b class="nc">&nbsp;                val part3 = value.substring(6, 9)</b>
+<b class="nc">&nbsp;                val part4 = value.substring(9)</b>
+<b class="nc">&nbsp;                &quot;$part1.$part2.$part3-$part4&quot;</b>
+&nbsp;            }
+&nbsp;            14 -&gt; { // CNPJ
+<b class="nc">&nbsp;                val part1 = value.substring(0, 2)</b>
+<b class="nc">&nbsp;                val part2 = value.substring(2, 5)</b>
+<b class="nc">&nbsp;                val part3 = value.substring(5, 8)</b>
+<b class="nc">&nbsp;                val part4 = value.substring(8, 12)</b>
+<b class="nc">&nbsp;                val part5 = value.substring(12)</b>
+<b class="nc">&nbsp;                &quot;$part1.$part2.$part3/$part4-$part5&quot;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            else -&gt; value</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-05 16:34</div>
+</div>
+</body>
+</html>
