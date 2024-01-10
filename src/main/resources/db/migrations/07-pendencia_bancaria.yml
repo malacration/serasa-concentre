@@ -26,13 +26,13 @@ databaseChangeLog:
                   type: NUMBER
               - column:
                   name: SUB_TIPO
-                  type: varchar
+                  type: varchar(255)
               - column:
                   name: TIPO_OCORRENCIA
-                  type: varchar
+                  type: varchar(255)
               - column:
                   name: ORIGEM
-                  type: varchar
+                  type: varchar(255)
               - column:
                   name: QUANTIDADE
                   type: NUMBER

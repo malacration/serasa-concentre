@@ -23,10 +23,10 @@ databaseChangeLog:
                   type: clob
               - column:
                   name: CPF_CNPJ
-                  type: varchar
+                  type: varchar(255)
               - column:
                   name: TIPO_PESSOA
-                  type: varchar
+                  type: varchar(255)
         - createIndex:
             columns:
               - column:

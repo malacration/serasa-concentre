@@ -20,19 +20,19 @@ databaseChangeLog:
                   type: DATETIME
               - column:
                   name: FATOR
-                  type: varchar
+                  type: varchar(255)
               - column:
                   name: PROBABILIDADE_INADIMPLENCIA
-                  type: varchar
+                  type: varchar(255)
               - column:
                   name: MENSAGEM
-                  type: varchar
+                  type: varchar(255)
               - column:
                   name: porte
-                  type: varchar
+                  type: varchar(255)
               - column:
                   name: SUB_TIPO
-                  type: varchar
+                  type: varchar(255)
               - column:
                   name: CONSULTA_ID
                   type: INT

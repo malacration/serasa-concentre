@@ -26,10 +26,10 @@ databaseChangeLog:
                   type: NUMBER
               - column:
                   name: SUB_TIPO
-                  type: varchar
+                  type: varchar(255)
               - column:
                   name: ORIGEM
-                  type: varchar
+                  type: varchar(255)
               - column:
                   name: TOTAL
                   type: NUMBER
