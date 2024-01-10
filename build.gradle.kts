@@ -25,6 +25,8 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.liquibase:liquibase-core")
+	implementation("org.liquibase.ext:liquibase-hanadb:4.20.0")
+	implementation("com.sap.cloud.db.jdbc:ngdbc:2.19.15")
 
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	developmentOnly("com.h2database:h2")
