@@ -14,7 +14,7 @@ class ConvemDevedoresTest {
         val acaoJudicial = ConvemDevedoresRetorno(entrada)
         Assertions.assertEquals(getDate("20220305"), acaoJudicial.dataInicial)
         Assertions.assertEquals(getDate("20230228"), acaoJudicial.dataFinal)
-        Assertions.assertEquals(17, acaoJudicial.quantidade)
+        Assertions.assertEquals(0.17, acaoJudicial.total)
         Assertions.assertEquals(getDouble("000000006165936"), acaoJudicial.valor)
         Assertions.assertEquals("EFAIDROF DNPTT W", acaoJudicial.origem)
     }

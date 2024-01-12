@@ -10,7 +10,7 @@ class FalenciaConcordataRetorno(val entrada : String) : RetornoSerasa() {
     val subTipo : String = entrada.substring(4, 6)
     val dataInicial : Date = getDate(entrada.substring(6, 6+8))
     val dataFinal : Date = getDate(entrada.substring(14, 14+8))
-    val quatidade : Int = entrada.substring(22, 31).toInt()
+    val total : Double = getDouble(entrada.substring(22, 31))
     val valor : Double = getDouble(entrada.substring(31, 46))
     val origem : String = entrada.substring(46, 46+30)
 
@@ -20,7 +20,7 @@ class FalenciaConcordataRetorno(val entrada : String) : RetornoSerasa() {
     }
 
     fun getFalenciaConcordata(consulta : Consulta): FalenciaConcordata {
-        return FalenciaConcordata(dataInicial,dataFinal,quatidade,valor,origem,consulta)
+        return FalenciaConcordata(dataInicial,dataFinal,total,valor,origem,consulta)
     }
 
 }

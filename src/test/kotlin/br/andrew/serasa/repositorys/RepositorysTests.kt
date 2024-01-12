@@ -179,7 +179,7 @@ class RepositorysTests {
         Assertions.assertEquals(1,pendencias.size)
         Assertions.assertEquals(this.parse.getDate("20210413"),pendencias.get(0).dataInicial)
         Assertions.assertEquals(this.parse.getDate("20210413"),pendencias.get(0).dataFinal)
-        Assertions.assertEquals(0,pendencias.get(0).quatidade)
+        Assertions.assertEquals(0.0,pendencias.get(0).total)
         Assertions.assertEquals(this.parse.getDouble("000000000000001"),pendencias.get(0).valor)
         Assertions.assertEquals(30,pendencias.get(0).origem.length)
         val consulta : Consulta = consultaRepository.save(Consulta(parse))

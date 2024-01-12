@@ -31,7 +31,7 @@ databaseChangeLog:
                   name: TIPO_OCORRENCIA
                   type: varchar(255)
               - column:
-                  name: QUANTIDADE
+                  name: TOTAL
                   type: NUMBER
               - column:
                   name: CONSULTA_ID

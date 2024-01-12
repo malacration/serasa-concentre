@@ -10,7 +10,7 @@ import java.util.Date
 class FalenciaConcordata(
     val dataInicial: Date,
     val dataFinal: Date,
-    val quantidade: Int,
+    val total: Double,
     val valor: Double,
     val origem: String,
     @ManyToOne

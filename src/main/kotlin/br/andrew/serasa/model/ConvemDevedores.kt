@@ -10,7 +10,7 @@ import java.util.Date
 class ConvemDevedores(
     val dataInicial: Date,
     val dataFinal: Date,
-    val quantidade: Int,
+    val total: Double,
     val valor: Double,
     val origem: String,
     @ManyToOne

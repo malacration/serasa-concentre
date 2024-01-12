@@ -9,7 +9,7 @@ import java.util.*
 class PendenciaComercial(
     val dataInicial: Date,
     val dataFinal: Date,
-    val quantidade: Int,
+    val total: Int,
     val valor: Double,
     val tipoOcorrencia: String,
     val origem: String,

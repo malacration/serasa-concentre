@@ -11,7 +11,7 @@ class PendenciaBancaria(
     val subTipo: String,
     val dataInicial: Date,
     val dataFinal: Date,
-    val quantidade: Int,
+    val total: Double,
     val valor: Double,
     val tipoOcorrencia: String,
     val origem: String,

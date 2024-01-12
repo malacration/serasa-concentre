@@ -28,7 +28,7 @@ databaseChangeLog:
                   name: ORIGEM
                   type: varchar(255)
               - column:
-                  name: QTD_TOTAL
+                  name: TOTAL
                   type: NUMBER
               - column:
                   name: CONSULTA_ID

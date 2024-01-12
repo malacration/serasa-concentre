@@ -13,7 +13,7 @@ class AcaoJudicialTest {
         val acaoJudicial = AcaoJudicialRetorno(entrada)
         Assertions.assertEquals(SimpleDateFormat("yyyyMMdd").parse("20190110"), acaoJudicial.dataInicial)
         Assertions.assertEquals(SimpleDateFormat("yyyyMMdd").parse("20190110"), acaoJudicial.dataFinal)
-        Assertions.assertEquals(1, acaoJudicial.quantidade)
+        Assertions.assertEquals(0.01, acaoJudicial.total)
         Assertions.assertEquals(192045.99, acaoJudicial.valor)
         Assertions.assertEquals("SANTOS                        ", acaoJudicial.origem)
     }

@@ -11,7 +11,7 @@ class AcaoJudicial(
     val dataFinal: Date,
     val valor: Double,
     val origem: String,
-    val quantidade: Int,
+    val total: Double,
     @ManyToOne
     @JsonBackReference
     val consulta: Consulta) {

@@ -12,7 +12,7 @@ class PendenciaBancariaRetorno(val entrada : String) : RetornoSerasa(){
     val subTipo : String = entrada.substring(4, 6)
     val dataInicial : Date = getDate(entrada.substring(6, 6+8))
     val dataFinal : Date = getDate(entrada.substring(14, 14+8))
-    val qtdTotal : Int = entrada.substring(22, 31).toInt()
+    val qtdTotal : Double = getDouble(entrada.substring(22, 31))
     val valor : Double = getDouble(entrada.substring(31, 46))
     val tipoOcorencia : String = entrada.substring(46, 47)
     val origem : String = entrada.substring(46, 46+16)

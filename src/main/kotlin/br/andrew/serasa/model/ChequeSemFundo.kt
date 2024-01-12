@@ -10,7 +10,7 @@ import java.util.Date
 class ChequeSemFundo(
     val dataInicial: Date,
     val dataFinal: Date,
-    val qtdTotal: String,
+    val total: String,
     val valor: Double,
     val origem: String,
     @ManyToOne
