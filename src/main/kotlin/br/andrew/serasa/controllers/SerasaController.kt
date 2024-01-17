@@ -13,13 +13,18 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("serasa")
 class SerasaController(
     val repository : ConsultaRepository,
+    val index: IndexController,
     val service : SerasaService) {
 
     @GetMapping("{cpfCnpj}")
-    fun get(@PathVariable cpfCnpj : String, score : Boolean = false): Any? {
-        //TODO decidir se consulta N vezes?
-        val parse = service.getByCpf(cpfCnpj,score)
-        return repository.save(Consulta(parse))
+    fun get(@PathVariable cpfCnpj : String, score : Boolean = false): Consulta {
+        val consulta = index.getCpfCnpj(cpfCnpj).firstOrNull()
+        return if(consulta == null || consulta.isAgeDays(60)){
+            val parse = service.getByCpf(cpfCnpj,score)
+            repository.save(Consulta(parse))
+        }else {
+            consulta
+        }
     }
 
     @GetMapping("{cpfCnpj}/score")
@@ -27,6 +32,7 @@ class SerasaController(
         return get(cpfCnpj,true)
     }
 
+   //TODO remover no futuro
     @GetMapping("{cpfCnpj}/score/blocos")
     fun getScoreBlocos(@PathVariable cpfCnpj : String): Any? {
         return service.getByCpf(cpfCnpj,true)

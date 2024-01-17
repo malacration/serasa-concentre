@@ -4,7 +4,8 @@ import br.andrew.serasa.model.magnetivo.CpfCnpj
 import br.andrew.serasa.model.retorno.ParseRetorno
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
-import java.util.Date
+import java.util.*
+
 
 @Entity
 @Table(name = "CONSULTA")
@@ -58,4 +59,14 @@ class Consulta(
     @Id
     @GeneratedValue
     var id : Int? = null
+
+
+    fun isAgeDays(days : Int): Boolean {
+        val cal: Calendar = GregorianCalendar()
+        cal.time = Date()
+        cal.add(Calendar.DAY_OF_MONTH, -days)
+        return dataConsulta.before(cal.time)
+    }
+
+
 }

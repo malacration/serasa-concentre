@@ -14,7 +14,7 @@ class IndexController(
     val repository : ConsultaRepository) {
 
     @GetMapping("{cpfCnpj}")
-    fun getTest(@PathVariable cpfCnpj : String): List<Consulta> {
+    fun getCpfCnpj(@PathVariable cpfCnpj : String): List<Consulta> {
         return repository.findByCpfCnpj(cpfCnpj)
     }
 }
