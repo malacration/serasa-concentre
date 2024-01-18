@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 
-class ScoreRshiRetorno(val entrada : String) {
+class ScorePessoaJuridicaRetorno(val entrada : String) {
 
     private val parse = RetornoSerasa()
     val data : String = entrada.substring(11, 11+8)

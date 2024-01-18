@@ -1,5 +1,6 @@
 package br.andrew.serasa.model.retorno
 
+import br.andrew.serasa.model.ScorePessoaFisicaRetorno
 import br.andrew.serasa.model.magnetivo.CpfCnpj
 import com.fasterxml.jackson.annotation.JsonIgnore
 
@@ -66,8 +67,12 @@ class ParseRetorno(@JsonIgnore val retorno : String, val cpfCnpj : CpfCnpj) {
         return blocos.filter { it.startsWith("I15000") }.map { FalenciaConcordataRetorno(it) }
     }
 
-    fun getScoreRshi() : List<ScoreRshiRetorno>{
-        return blocos.filter { it.startsWith("F900RSHI001") }.map { ScoreRshiRetorno(it) }
+    fun getScorePessoaJuridicaRshi() : List<ScorePessoaJuridicaRetorno>{
+        return blocos.filter { it.startsWith("F900RSHI00") }.map { ScorePessoaJuridicaRetorno(it) }
+    }
+
+    fun getScorePessoaFisica() : List<ScorePessoaFisicaRetorno> {
+        return blocos.filter { it.startsWith("F900RSHM00") }.map { ScorePessoaFisicaRetorno(it) }
     }
 
     fun getConvemDevedores() : List<ConvemDevedoresRetorno>{

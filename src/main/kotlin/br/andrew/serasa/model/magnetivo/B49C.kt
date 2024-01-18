@@ -40,7 +40,7 @@ class B49C(val cpfCnpj: CpfCnpj, val score: Boolean = false){
             valor = ""
         }else if (score && cpfCnpj.isCpf()){
             chave = "RSHM"
-            valor = ""
+            valor = "HSPN"
         }
 
         return valores.joinToString("") { it.toString() }

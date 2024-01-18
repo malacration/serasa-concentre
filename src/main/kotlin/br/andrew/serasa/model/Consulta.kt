@@ -53,7 +53,10 @@ class Consulta(
         pendenciaBancaria = parseRetorno.getPendenciaBancaria().map { it.getPendenciaBancaria(this) }
         pendenciaComercial = parseRetorno.getPendenciaComercial().map { it.getPendenciaComercial(this) }
         protestos = parseRetorno.getProtestos().map { it.getProtesto(this) }
-        score = parseRetorno.getScoreRshi().map { it.getScore(this) }
+        score = parseRetorno.getScorePessoaJuridicaRshi().map { it.getScore(this) }
+            .toMutableList().also {
+                it.addAll(parseRetorno.getScorePessoaFisica().map { it.getScore(this) })
+            }
     }
 
     @Id

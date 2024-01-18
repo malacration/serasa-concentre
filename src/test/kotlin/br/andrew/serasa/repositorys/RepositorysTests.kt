@@ -199,7 +199,7 @@ class RepositorysTests {
     @Test
     fun scoreTest(){
         val entrada = "F900RSHI0011412202317:06:15055000117PROBABILIDADE DE INADIMPLENCIA:  1,17%                                         "
-        val score = ScoreRshiRetorno(entrada)
+        val score = ScorePessoaJuridicaRetorno(entrada)
         val consulta : Consulta = consultaRepository.save(Consulta(ParseRetorno(retorno,CpfCnpj("088.086.650-03"))))
         scoreRepository.save(score.getScore(consulta))
     }
